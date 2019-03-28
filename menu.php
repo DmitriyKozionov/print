@@ -9,7 +9,7 @@
     <li><a href="#"><i class="fa fa-home fa-fw"></i>Главная</a></li>
     <li><a href="printer.php" target="content">Добавить принтер</a></li>
     <li><a href="kartrij.php" target="content">Добавить кртридж</a></li>
-    <li><a href="" target="content">printlink</a></li>
+ 
 
     <li><a href="#">Работа с принтером</a></li>
     <li><a href="#">Работа с картриджем</a></li>

@@ -8,6 +8,7 @@ if (isset($_POST['model']))
     $inv = trim($_POST['inv']);
 
 
+
     if ($model !='')
 {
   $printer = mysql_real_escape_string($printer);
@@ -34,6 +35,7 @@ exit();
 
 
       <hr/>
+
   <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
   <input type ="text" name ="inv" placeholder="Инвентариза́ционный" />

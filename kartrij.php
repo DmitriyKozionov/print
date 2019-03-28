@@ -12,7 +12,7 @@ if (isset($_POST['model']))
     if ($model !='')
 {
   $kartridj = mysql_real_escape_string($kartridj);
-  $sql = "INSERT INTO kartridj (model, id_printera) VALUES ('$model', '$id_printera')";
+  $sql = "INSERT INTO kartridj ( model, id_printera) VALUES ('$model', '$id_printera')";
 
   mysql_query($sql);
 
@@ -32,17 +32,18 @@ exit();
     </head>
     <body >
          <hr/>
-  <form method="post">
+   <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
+
   <input type = "submit" value="Добавить картридж"/>
   </form>
          <hr/>
 
 <table class="tab" border="1" >
   <tr>
-    
+    <td>id</td>
     <td>Модель</td>
-    <td>№ Принтера</td>
+    <td>Id Принтера</td>
   
   </tr>
 
@@ -55,6 +56,7 @@ while ($row = mysql_fetch_assoc($result))
 
     echo "<tr>";
 
+    echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['model'].'</td>';
     echo '<td>'.$row['id_printera'].'</td>';
    
@@ -65,7 +67,61 @@ while ($row = mysql_fetch_assoc($result))
 
 ?>
 
-</table>    
+</table> 
+
+
+
+
+<div class="f1">
+  <p>Принтер</p>
+
+<?php
+$sql = "SELECT * FROM printer";
+
+$result_select = mysql_query($sql);
+
+echo "<select name = ''>";
+
+while($object = mysql_fetch_object($result_select)){
+
+echo "<option value = '$object->ID' > $object->ID </option>";
+
+}
+
+echo "</select>";
+
+?>
+<br/>
+<br/>
+  <p>Картридж</p>
+<?php
+$sql = "SELECT * FROM kartridj";
+
+$result_select = mysql_query($sql);
+
+echo "<select name = ''>";
+
+while($object = mysql_fetch_object($result_select)){
+
+echo "<option value = '$object->id' > $object->id </option>";
+
+}
+
+echo "</select>";
+
+?>
+
+
+</div>
+ 
+
+
+
+
+
+
+
+
 
     </body>
 </html>
