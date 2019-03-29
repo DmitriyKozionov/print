@@ -61,5 +61,8 @@ nav ul{
 
 .f1{
   position: absolute;
-  top:250px;
+  top:500px;
+}
+.a1{
+  visibility: hidden;
 }
