@@ -13,7 +13,7 @@
 
     <li><a href="#">Работа с принтером</a></li>
     <li><a href="#">Работа с картриджем</a></li>
-    <li><a href="#">Сотрудники</a></li>
+    <li><a href="sotrydnik.php" target="content">Сотрудники</a></li>
     <li><a href="#">Выход</a></li>
   </ul>
 </nav>

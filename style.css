@@ -47,22 +47,27 @@ nav ul{
 .one li {
   display: inline;
 }
+.btab{
+
+    width: 200px; 
+   
+    margin: auto; 
+    
+    width: 960px;
+}
 .tab{
-  position: absolute;
-  left: 160px;
-  width: 960px;
-  }
-  .tab1{
-  position: absolute;
-  left: 160px;
-  top:200px;
+
+
+
   width: 960px;
   }
 
-.f1{
-  position: absolute;
-  top:500px;
-}
+
 .a1{
   visibility: hidden;
 }
+.zagolovok
+
+    
+{ margin: auto;
+   width: 200px;  }
