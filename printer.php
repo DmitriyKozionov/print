@@ -39,13 +39,13 @@ exit();
   <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
   <input type ="text" name ="inv" placeholder="Инвентариза́ционный" />
-  
+  Сотрудник
   <?php
 $sql = "SELECT * FROM sotrydnik";
 $result_select = mysql_query($sql);
 echo "<select name = 'idsotr'>";
 while($object = mysql_fetch_object($result_select)){
-echo "<option value = '$object->id' > $object->id </option>";
+echo "<option value = '$object->id','$object->fio' > $object->fio </option>";
 }
 echo "</select>";
 ?>

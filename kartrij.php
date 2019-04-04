@@ -74,7 +74,7 @@ $sql = "SELECT * FROM printer";
 $result_select = mysql_query($sql);
 echo "<select name = 'id_kart'>";
 while($object = mysql_fetch_object($result_select)){
-echo "<option value = '$object->ID,' > $object->ID </option>";
+echo "<option value = '$object->ID' > $object->ID $object->model </option>";
 }
 echo "</select>";
 ?>
@@ -89,7 +89,7 @@ $sql = "SELECT * FROM kartridj";
 $result_select = mysql_query($sql);
 echo "<select name = 'id_print'>";
 while($object = mysql_fetch_object($result_select)){
-echo "<option value = '$object->id' > $object->id </option>";
+echo "<option value = '$object->id' > $object->id $object->model </option>";
 }
 echo "</select>";
 ?>

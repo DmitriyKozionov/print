@@ -11,9 +11,11 @@
     <li><a href="kartrij.php" target="content">Добавить кртридж</a></li>
  
 
-    <li><a href="#">Работа с принтером</a></li>
-    <li><a href="#">Работа с картриджем</a></li>
+    <li><a href="remprint.php" target="content">Работа с принтером</a></li>
+    <li><a href="remkartr.php" target="content">Работа с картриджем</a></li>
+    <li><a href="vidrabot.php" target="content">Вид работ</a></li>
     <li><a href="sotrydnik.php" target="content">Сотрудники</a></li>
+    <li><a href="otdel.php" target="content">Отдел</a></li>
     <li><a href="#">Выход</a></li>
   </ul>
 </nav>
