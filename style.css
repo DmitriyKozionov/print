@@ -71,3 +71,9 @@ nav ul{
     
 { margin: auto;
    width: 200px;  }
+
+   .form-signin {
+    max-width: 300px;
+    padding: 15px;
+    margin: 0 auto;
+   }
