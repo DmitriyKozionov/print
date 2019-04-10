@@ -7,10 +7,8 @@ if ($_POST['action'] == 'add_printer_link_kartridj')
   $id_print = trim($_POST['id_print']);
   $sql_1 = "INSERT INTO print_link_kart (id_print, id_kart) VALUES ('$id_kart', '$id_print')";  
  mysql_query($sql_1);}
- 
- if ($_POST['action'] == 'add_kartridj')
+  if ($_POST['action'] == 'add_kartridj')
  {
- 
   $id_printera = trim($_POST['id_printera']);
   $kartridj = mysql_real_escape_string($kartridj);
   $sql = "INSERT INTO kartridj ( model, id_printera) VALUES ('$model', '$id_printera')";

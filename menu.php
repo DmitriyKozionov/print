@@ -16,7 +16,7 @@
     <li><a href="vidrabot.php" target="content">Вид работ</a></li>
     <li><a href="sotrydnik.php" target="content">Сотрудники</a></li>
     <li><a href="otdel.php" target="content">Отдел</a></li>
-    <li><a href="#">Выход</a></li>
+    <li><a href="logout.php" target="_top">Выход</a></li>
   </ul>
 </nav>
 

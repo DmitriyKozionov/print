@@ -7,8 +7,6 @@
 <body>
 
 <?php
-echo '<pre>'.print_r($_POST,true).'</pre>';
-
 mysql_connect('localhost', 'root', '');
 mysql_select_db('bdprint');
 if (isset($_POST['username']))
@@ -37,13 +35,12 @@ if (isset($_POST['username']))
     <div class="container">
     	<form class="form-signin" method="POST">
     		<h2>Регистрация</h2>
-    	
-    		
     		<input type="text" name="username" class="form-control" placeholder="username">
     		<input type="text" name="email" class="form-control" placeholder="email">
     		<input type="text" name="password" class="form-control" placeholder="password">
     		<button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
-    		<a href="login.php"class="btn btn-lg btn-primary btn-block" type="submit">Вход</a>
+    		<a href="login.php" class="btn btn-lg btn-primary btn-block" type="submit">Вход</a>
+    		
     	</form>
     </div>
 </body>
