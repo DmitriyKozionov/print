@@ -14,7 +14,8 @@ if ($count == 1) {
 }else{
     $fmsg = "Ошибка";
 }
-}
+} 
+
 if (isset($_SESSION['username']))  {
     $username = $_SESSION['username'];
    echo "Hello" . $username . " ";
