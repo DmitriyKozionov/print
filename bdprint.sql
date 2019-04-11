@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 01 2019 г., 06:49
+-- Время создания: Апр 11 2019 г., 08:22
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -30,16 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `kartridj` (
   `id` int(5) NOT NULL,
-  `model` varchar(256) NOT NULL,
-  `id_printera` int(5) NOT NULL DEFAULT '5'
+  `model` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
 
 --
 -- Дамп данных таблицы `kartridj`
 --
 
-INSERT INTO `kartridj` (`id`, `model`, `id_printera`) VALUES
-(34, 'w-4der-w', 0);
+INSERT INTO `kartridj` (`id`, `model`) VALUES
+(54, 'Kart1'),
+(55, 'kart2'),
+(56, 'Kart3');
 
 -- --------------------------------------------------------
 
@@ -52,6 +53,14 @@ CREATE TABLE `otdel` (
   `nazv` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
 
+--
+-- Дамп данных таблицы `otdel`
+--
+
+INSERT INTO `otdel` (`id`, `nazv`) VALUES
+(2, 'otdel1\r\n'),
+(3, 'otdel2');
+
 -- --------------------------------------------------------
 
 --
@@ -61,17 +70,19 @@ CREATE TABLE `otdel` (
 CREATE TABLE `printer` (
   `ID` int(5) NOT NULL,
   `inv` int(20) NOT NULL,
-  `model` varchar(256) NOT NULL,
-  `idkart` int(5) DEFAULT NULL,
-  `idsotr` int(5) NOT NULL DEFAULT '1'
+  `model` varchar(256) DEFAULT NULL,
+  `idsotr` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
 
 --
 -- Дамп данных таблицы `printer`
 --
 
-INSERT INTO `printer` (`ID`, `inv`, `model`, `idkart`, `idsotr`) VALUES
-(49, 123, 'hp', NULL, 1);
+INSERT INTO `printer` (`ID`, `inv`, `model`, `idsotr`) VALUES
+(58, 123, 'Printer1', '3'),
+(59, 12, 'Printer2', '6'),
+(66, 13, 'Printer3', '5'),
+(67, 55, 'Printer4', '12');
 
 -- --------------------------------------------------------
 
@@ -90,7 +101,11 @@ CREATE TABLE `print_link_kart` (
 --
 
 INSERT INTO `print_link_kart` (`id`, `id_print`, `id_kart`) VALUES
-(23, 34, 49);
+(53, 58, 54),
+(54, 58, 55),
+(55, 60, 56),
+(56, 59, 55),
+(57, 66, 56);
 
 -- --------------------------------------------------------
 
@@ -99,10 +114,23 @@ INSERT INTO `print_link_kart` (`id`, `id_print`, `id_kart`) VALUES
 --
 
 CREATE TABLE `remkartr` (
-  `idkartr` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `idkart` int(11) NOT NULL,
   `idrabot` int(11) NOT NULL,
-  `data` date NOT NULL
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
+
+--
+-- Дамп данных таблицы `remkartr`
+--
+
+INSERT INTO `remkartr` (`id`, `idkart`, `idrabot`, `data`) VALUES
+(1, 0, 1, '2019-04-04 05:48:08'),
+(2, 0, 2, '2019-04-04 05:48:47'),
+(3, 0, 1, '2019-04-04 05:48:49'),
+(4, 54, 1, '2019-04-04 05:49:29'),
+(5, 56, 3, '2019-04-10 05:32:14'),
+(6, 54, 1, '2019-04-11 05:11:30');
 
 -- --------------------------------------------------------
 
@@ -111,10 +139,18 @@ CREATE TABLE `remkartr` (
 --
 
 CREATE TABLE `remprint` (
-  `idprint` int(5) NOT NULL,
-  `idrabot` int(5) NOT NULL,
-  `data` date NOT NULL
+  `id` int(11) NOT NULL,
+  `idprint` int(11) NOT NULL,
+  `idrabot` int(11) NOT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
+
+--
+-- Дамп данных таблицы `remprint`
+--
+
+INSERT INTO `remprint` (`id`, `idprint`, `idrabot`, `data`) VALUES
+(1, 58, 2, '2019-04-04 10:30:05');
 
 -- --------------------------------------------------------
 
@@ -124,10 +160,41 @@ CREATE TABLE `remprint` (
 
 CREATE TABLE `sotrydnik` (
   `id` int(5) NOT NULL,
-  `fio` varchar(256) NOT NULL,
-  `id_otd` int(5) NOT NULL,
-  `doljn` varchar(256) NOT NULL
+  `fio` varchar(256) DEFAULT NULL,
+  `id_otd` int(5) DEFAULT NULL,
+  `doljn` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
+
+--
+-- Дамп данных таблицы `sotrydnik`
+--
+
+INSERT INTO `sotrydnik` (`id`, `fio`, `id_otd`, `doljn`) VALUES
+(3, 'Ivanov I.I', 1, 'doljn1'),
+(5, 'Popov P.P.', 2, 'doljn1'),
+(6, 'Petrov P.P', 2, 'doljn2'),
+(12, 'Sotrudnik1', 3, 'doljn2'),
+(13, 'Sotrudnik1', 2, 'doljn2');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(254) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
+(17, 'Shifter', 'sentemof@gmail.com', 'Shifter');
 
 -- --------------------------------------------------------
 
@@ -137,9 +204,17 @@ CREATE TABLE `sotrydnik` (
 
 CREATE TABLE `vidrab` (
   `id` int(5) NOT NULL,
-  `name` varchar(256) NOT NULL,
-  `stoimost` int(15) NOT NULL
+  `name` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1257;
+
+--
+-- Дамп данных таблицы `vidrab`
+--
+
+INSERT INTO `vidrab` (`id`, `name`) VALUES
+(1, 'rabota 1'),
+(2, 'rabota 2'),
+(3, 'rabota 3');
 
 --
 -- Индексы сохранённых таблиц
@@ -170,10 +245,29 @@ ALTER TABLE `print_link_kart`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `remkartr`
+--
+ALTER TABLE `remkartr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `remprint`
+--
+ALTER TABLE `remprint`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `sotrydnik`
 --
 ALTER TABLE `sotrydnik`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Индексы таблицы `vidrab`
@@ -189,32 +283,47 @@ ALTER TABLE `vidrab`
 -- AUTO_INCREMENT для таблицы `kartridj`
 --
 ALTER TABLE `kartridj`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT для таблицы `otdel`
 --
 ALTER TABLE `otdel`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `printer`
 --
 ALTER TABLE `printer`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT для таблицы `print_link_kart`
 --
 ALTER TABLE `print_link_kart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+--
+-- AUTO_INCREMENT для таблицы `remkartr`
+--
+ALTER TABLE `remkartr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT для таблицы `remprint`
+--
+ALTER TABLE `remprint`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `sotrydnik`
 --
 ALTER TABLE `sotrydnik`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT для таблицы `vidrab`
 --
 ALTER TABLE `vidrab`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
