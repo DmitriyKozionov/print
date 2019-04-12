@@ -32,21 +32,9 @@ nav ul{
   display: -o-flex;
   justify-content: space-around;
 }
-.one ul {
 
-  padding: 1em 0;
-  background: #ECDAD6;
-}
-.one a {
-  padding: 1em;
-  background: rgba(177, 152, 145, .3);
-  
-  color: #695753;
-}
-.one a:hover {background: #b19891;}
-.one li {
-  display: inline;
-}
+
+
 .btab{
 
     width: 200px; 

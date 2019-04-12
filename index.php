@@ -35,9 +35,9 @@ if (isset($_POST['username']))
     <div class="container">
     	<form class="form-signin" method="POST">
     		<h2>Регистрация</h2>
-    		<input type="text" name="username" class="form-control" placeholder="username">
-    		<input type="text" name="email" class="form-control" placeholder="email">
-    		<input type="text" name="password" class="form-control" placeholder="password">
+    		<input type="text" name="username" class="form-control" placeholder="username" required>
+    		<input type="email" name="email" class="form-control" placeholder="email" required>
+    		<input type="password" name="password" class="form-control" placeholder="password" >
     		<button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
     		<a href="login.php" class="btn btn-lg btn-primary btn-block" type="submit">Вход</a>
     		

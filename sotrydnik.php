@@ -26,6 +26,8 @@ exit();
     <head>
     
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     	<link rel="stylesheet" type="text/css" href="style.css">
         <title>Контент</title>
     </head>
@@ -43,7 +45,7 @@ $sql = "SELECT * FROM otdel";
 $result_select = mysql_query($sql);
 echo "<select name = 'id_otd'>";
 while($object = mysql_fetch_object($result_select)){
-echo "<option value = '$object->id,''$object->nazv,' > $object->id $object->nazv,  </option>";
+echo "<option value = '$object->id,''$object->nazv,' >$object->nazv  </option>";
 }
 echo "</select>";
 ?>

@@ -5,7 +5,8 @@ mysql_select_db('bdprint');
 if (isset($_POST['idrabot']))
 {   
   $idprint = trim($_POST['idprint']);
-	$idrabot = trim($_POST['idrabot']);
+  $idrabot = trim($_POST['idrabot']);
+  
   $data = trim($_POST['data']);
 	
 
@@ -28,6 +29,9 @@ exit();
     <head>
     
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
     	<link rel="stylesheet" type="text/css" href="style.css">
         <title>Контент</title>
     </head>
@@ -70,6 +74,7 @@ echo "</select>";
     <td>ID</td>
     <td>Принтер</td>
     <td>Работа</td>
+ 
      <td>Дата</td>
     
    </tr>
@@ -87,6 +92,7 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['idprint'].'</td>';
     echo '<td>'.$row['idrabot'].'</td>';
+   
     echo '<td>'.$row['data'].'</td>';
  
    
