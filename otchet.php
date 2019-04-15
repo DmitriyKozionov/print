@@ -15,9 +15,10 @@
       <hr/>
 
   <form method="post">
-  <input type = "text" placeholder="С ДД.ММ.ГГ" />
+  <input type = "date"  value="ДД/ММ/ГГГГ">
   -
-  <input type = "text" placeholder="По ДД.ММ.ГГ" />
+  <input type = "date"  value="ДД/ММ/ГГГГ">
+
   <input type = "submit" value="Вывести"/>
 </form>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 11 2019 г., 08:22
+-- Время создания: Апр 15 2019 г., 07:48
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -59,7 +59,8 @@ CREATE TABLE `otdel` (
 
 INSERT INTO `otdel` (`id`, `nazv`) VALUES
 (2, 'otdel1\r\n'),
-(3, 'otdel2');
+(3, 'otdel2'),
+(4, 'otdel3');
 
 -- --------------------------------------------------------
 
@@ -82,7 +83,8 @@ INSERT INTO `printer` (`ID`, `inv`, `model`, `idsotr`) VALUES
 (58, 123, 'Printer1', '3'),
 (59, 12, 'Printer2', '6'),
 (66, 13, 'Printer3', '5'),
-(67, 55, 'Printer4', '12');
+(67, 55, 'Printer4', '12'),
+(68, 143, 'Printer 5', '5');
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,10 @@ INSERT INTO `print_link_kart` (`id`, `id_print`, `id_kart`) VALUES
 (54, 58, 55),
 (55, 60, 56),
 (56, 59, 55),
-(57, 66, 56);
+(57, 66, 56),
+(58, 68, 54),
+(59, 66, 55),
+(60, 67, 54);
 
 -- --------------------------------------------------------
 
@@ -130,7 +135,8 @@ INSERT INTO `remkartr` (`id`, `idkart`, `idrabot`, `data`) VALUES
 (3, 0, 1, '2019-04-04 05:48:49'),
 (4, 54, 1, '2019-04-04 05:49:29'),
 (5, 56, 3, '2019-04-10 05:32:14'),
-(6, 54, 1, '2019-04-11 05:11:30');
+(6, 54, 1, '2019-04-11 05:11:30'),
+(7, 54, 1, '2019-04-12 04:26:45');
 
 -- --------------------------------------------------------
 
@@ -150,7 +156,8 @@ CREATE TABLE `remprint` (
 --
 
 INSERT INTO `remprint` (`id`, `idprint`, `idrabot`, `data`) VALUES
-(1, 58, 2, '2019-04-04 10:30:05');
+(1, 58, 2, '2019-04-04 10:30:05'),
+(2, 66, 3, '2019-04-12 09:26:33');
 
 -- --------------------------------------------------------
 
@@ -174,7 +181,7 @@ INSERT INTO `sotrydnik` (`id`, `fio`, `id_otd`, `doljn`) VALUES
 (5, 'Popov P.P.', 2, 'doljn1'),
 (6, 'Petrov P.P', 2, 'doljn2'),
 (12, 'Sotrudnik1', 3, 'doljn2'),
-(13, 'Sotrudnik1', 2, 'doljn2');
+(14, 'Sotrudnik2', 3, 'doljn2');
 
 -- --------------------------------------------------------
 
@@ -214,7 +221,8 @@ CREATE TABLE `vidrab` (
 INSERT INTO `vidrab` (`id`, `name`) VALUES
 (1, 'rabota 1'),
 (2, 'rabota 2'),
-(3, 'rabota 3');
+(3, 'rabota 3'),
+(4, 'rabota 4');
 
 --
 -- Индексы сохранённых таблиц
@@ -267,7 +275,8 @@ ALTER TABLE `sotrydnik`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `unique_index` (`username`,`email`);
 
 --
 -- Индексы таблицы `vidrab`
@@ -288,42 +297,42 @@ ALTER TABLE `kartridj`
 -- AUTO_INCREMENT для таблицы `otdel`
 --
 ALTER TABLE `otdel`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `printer`
 --
 ALTER TABLE `printer`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT для таблицы `print_link_kart`
 --
 ALTER TABLE `print_link_kart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT для таблицы `remkartr`
 --
 ALTER TABLE `remkartr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT для таблицы `remprint`
 --
 ALTER TABLE `remprint`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `sotrydnik`
 --
 ALTER TABLE `sotrydnik`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT для таблицы `vidrab`
 --
 ALTER TABLE `vidrab`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
