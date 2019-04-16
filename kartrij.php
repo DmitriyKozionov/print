@@ -10,12 +10,12 @@ if ($_POST['action'] == 'add_printer_link_kartridj')
   if ($_POST['action'] == 'add_kartridj')
  {
   $id_printera = trim($_POST['id_printera']);
-  $kartridj = mysql_real_escape_string($kartridj);
-  $sql = "INSERT INTO kartridj ( model, id_printera) VALUES ('$model', '$id_printera')";
+  $model = trim($_POST['model']);
+   $kartridj = mysql_real_escape_string($kartridj);
+   $sql = "INSERT INTO kartridj (model) VALUES ('$model')";
   mysql_query($sql);}
-
-
   ?>
+
 
 
 <html>
@@ -46,7 +46,6 @@ if ($_POST['action'] == 'add_printer_link_kartridj')
 
 
 <?php
-
 $result = mysql_query('SELECT * FROM kartridj');
 while ($row = mysql_fetch_assoc($result))
 { 

@@ -11,10 +11,7 @@ if (isset($_POST['model']))
     
 {
   $printer = mysql_real_escape_string($printer);
-
-
-  $sql = "INSERT INTO printer (model, inv, idsotr) VALUES ('$model', '$inv', '$idsotr')";
-  
+$sql = "INSERT INTO printer (model, inv, idsotr) VALUES ('$model', '$inv', '$idsotr')";
   mysql_query($sql);
 }
 header('Location: printer.php');
