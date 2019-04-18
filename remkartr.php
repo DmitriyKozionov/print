@@ -76,7 +76,8 @@ echo "</select>";
    </tr>
    <?php
 
-$result = mysql_query('SELECT * FROM remkartr');
+$result = mysql_query("SELECT * FROM remkartr");
+
 
 while ($row = mysql_fetch_assoc($result))
 

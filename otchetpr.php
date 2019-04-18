@@ -76,19 +76,19 @@ ON printer.idsotr = sotrydnik.id
 LEFT JOIN print_link_kart 
 ON printer.ID = print_link_kart.id_print
 LEFT JOIN kartridj
-ON print_link_kart.id_kart = kartridj.id
+ON print_link_kart.id_kart = printer.id
 RIGHT JOIN 
     (
-        SELECT remkartr.idkart, remkartr.idrabot, vidrab.name as vidrab, remkartr.data FROM remkartr        
+        SELECT remprint.idprint, remprint.idrabot, vidrab.name as vidrab, remprint.data FROM remprint        
         LEFT JOIN
         vidrab 
-        ON vidrab.id = remkartr.idrabot
+        ON vidrab.id = remprint.idrabot
 
-           WHERE remkartr.data BETWEEN '$data1' AND '$data2'
+           WHERE remprint.data BETWEEN '$data1' AND '$data2'
            
     ) AS REMONT
 
-ON  REMONT.idkart = print_link_kart.id_kart");
+ON  REMONT.idkart = print_link_kart.id_print");
 
 while ($row = mysql_fetch_assoc($result))
 

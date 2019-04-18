@@ -15,10 +15,11 @@
 
     <li><a href="remprint.php"class="btn btn-primary" target="content">Работа с принтером</a></li>
     <li><a href="remkartr.php"class="btn btn-primary" target="content">Работа с картриджем</a></li>
-    <li><a href="vidrabot.php"class="btn btn-primary" target="content">Вид работ</a></li>
+    <li><a href="vidrabot.php"class="btn btn-primary" target="content">Услуги</a></li>
     <li><a href="sotrydnik.php"class="btn btn-primary" target="content">Сотрудники</a></li>
     <li><a href="otdel.php"class="btn btn-primary" target="content">Отдел</a></li>
-    <li><a href="otchet.php" class="btn btn-primary"target="content">Отчет</a></li>
+    <li><a href="otchetkr.php" class="btn btn-primary"target="content">Отчет</a></li>
+    
     <li><a href="logout.php"class="btn btn-primary" target="_top">Выход</a></li>
   </ul>
 </nav>
