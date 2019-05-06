@@ -29,13 +29,15 @@ if ($_POST['action'] == 'add_printer_link_kartridj')
        <div class="zagolovok"><h2>Картридж</h2></div>
 
          <hr/>
+         <div class="container">
    <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
   <input type = "submit" value="Добавить картридж"/>
   <input class='a1' type = "text" name ="action" value="add_kartridj" />
   </form>
+
          <hr/>
-<div class="btab">
+
 <table class="tab" border="1" >
   <tr>
     <td>id</td>
@@ -60,8 +62,8 @@ while ($row = mysql_fetch_assoc($result))
 ?>
 
 </table> 
-</div>
 
+<div class="forma">
 <form method="post">
 
 <div class="f1">
@@ -95,6 +97,7 @@ echo "</select>";
 
 <input type = "submit" value="Добавить"/>
 </form>
+
 </div>
  </body>
 </html>

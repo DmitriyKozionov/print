@@ -39,7 +39,7 @@ exit();
       <hr/>
 
   <form method="post">
- 
+ <div class="container">
   Картридж
   <?php
 $sql = "SELECT * FROM kartridj";
@@ -65,7 +65,7 @@ echo "</select>";
 </form>
 
 <hr/>
-<div class="btab">
+<div class="">
 <table class="tab" border="1" >
   <tr>
     <td>ID</td>

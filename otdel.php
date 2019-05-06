@@ -34,14 +34,14 @@ exit();
 
 
       <hr/>
-
+<div class="container">
   <form method="post">
   <input type = "text" name = "nazv" placeholder="Название" />
   <input type = "submit" value="Добавить отдел"/>
 </form>
 
 <hr/>
-<div class="btab">
+<div class="">
 <table class="tab" border="1" >
   <tr>
    

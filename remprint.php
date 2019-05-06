@@ -40,7 +40,7 @@ exit();
 
 
       <hr/>
-
+<div class="container">
   <form method="post">
  
   Принтер
@@ -68,7 +68,7 @@ echo "</select>";
 </form>
 
 <hr/>
-<div class="btab">
+<div class="">
 <table class="tab" border="1" >
   <tr>
     <td>ID</td>

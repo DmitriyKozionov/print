@@ -26,6 +26,7 @@ mysql_select_db('bdprint');
 
 
       <hr/>
+<div class="container">
 
   <form method="post">
   <input type = "date" name ="data"  value="ДД/ММ/ГГГГ">
@@ -34,6 +35,7 @@ mysql_select_db('bdprint');
   <input type = "submit" value="Вывести"/>
   <button class="myprint">Печать</button>
 </form>
+
 
 <hr/>
 <script>
@@ -53,7 +55,7 @@ $('iframe').remove();
 
 <style>#print_frame{display: none;}</style>
 <div class='to_print'>
-<div class="btab" >
+<div class="" >
 <table class="tab" border="1" >
   <tr>
    
@@ -134,7 +136,7 @@ while ($row = mysql_fetch_assoc($result))
 ?>
 </table>
 </div>
-</div>
+
 
   </body>
 </html>

@@ -1,6 +1,9 @@
 <?php
+include_once('modelprinter.php');
 mysql_connect('localhost', 'root', '');
 mysql_select_db('bdprint');
+
+
 if (isset($_POST['model']))
 {
    
@@ -10,10 +13,13 @@ if (isset($_POST['model']))
     $idsotr= trim($_POST['idsotr']);
     
 {
-  $printer = mysql_real_escape_string($printer);
+$printer = mysql_real_escape_string($printer);
 $sql = "INSERT INTO printer (model, inv, idsotr) VALUES ('$model', '$inv', '$idsotr')";
   mysql_query($sql);
 }
+
+  mysql_query($sql);
+
 header('Location: printer.php');
 exit();
 }
@@ -34,11 +40,13 @@ exit();
 
 
       <hr/>
+<div class="container">
 
   <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
   <input type ="text" name ="inv" placeholder="Инвентариза́ционный" />
-  Сотрудник
+  
+ Сотрудник
   <?php
 $sql = "SELECT * FROM sotrydnik";
 $result_select = mysql_query($sql);
@@ -53,7 +61,7 @@ echo "</select>";
 </form>
 
 <hr/>
-<div class="btab">
+
 <table class="tab" border="1" >
   <tr>
    
@@ -65,19 +73,8 @@ echo "</select>";
   </tr>
 
 <?php
-$result = mysql_query('SELECT printer.ID, printer.inv, .printer.model, printer.idsotr, GROUP_CONCAT(kartridj.id) as Kartiges, sotrydnik.fio  FROM printer
-LEFT JOIN print_link_kart
-ON printer.ID = print_link_kart.id_print
-
-LEFT JOIN kartridj
-ON print_link_kart.id_kart = kartridj.id
-
-LEFT JOIN sotrydnik
-ON printer.idsotr = sotrydnik.id
-GROUP BY printer.ID');
-
-while ($row = mysql_fetch_assoc($result))
-
+$list = a1();
+foreach ($list as $row)
 
 { 
 
