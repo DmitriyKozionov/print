@@ -1,5 +1,5 @@
 <?php
-include_once('modelprinter.php');
+include_once('models\printerModel.php');
 mysql_connect('localhost', 'root', '');
 mysql_select_db('bdprint');
 

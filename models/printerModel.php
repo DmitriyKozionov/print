@@ -20,27 +20,5 @@ while ($row = mysql_fetch_assoc($result))
 return $arr;
 }
 
-function a2($text)
-{
-	if (isset($_POST['model']))
-{
-   
-    $inv = trim($_POST['inv']);
-    $id = trim($_POST['idsotr']);
-    $model = trim($_POST['model']);
-    $idsotr= trim($_POST['idsotr']);
-    
-{
-$printer = mysql_real_escape_string($printer);
-$sql = "INSERT INTO printer (model, inv, idsotr) VALUES ('$model', '$inv', '$idsotr')";
-  mysql_query($sql);
-}
-
-  mysql_query($sql);
-}
-
-
-
-
 
 ?>
