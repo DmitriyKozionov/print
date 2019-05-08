@@ -1,9 +1,6 @@
 <?php
-include_once('models\printerModel.php');
 mysql_connect('localhost', 'root', '');
 mysql_select_db('bdprint');
-
-
 if (isset($_POST['model']))
 {
    
@@ -13,13 +10,11 @@ if (isset($_POST['model']))
     $idsotr= trim($_POST['idsotr']);
     
 {
-$printer = mysql_real_escape_string($printer);
-$sql = "INSERT INTO printer (model, inv, idsotr) VALUES ('$model', '$inv', '$idsotr')";
+  $printer = mysql_real_escape_string($printer);
+  $sql = "INSERT INTO printer (model, inv, idsotr) VALUES ('$model', '$inv', '$idsotr')";
+  
   mysql_query($sql);
 }
-
-  mysql_query($sql);
-
 header('Location: printer.php');
 exit();
 }
@@ -32,7 +27,7 @@ exit();
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    	<link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="style.css">
         <title>Контент</title>
     </head>
     <body>
@@ -40,13 +35,11 @@ exit();
 
 
       <hr/>
-<div class="container">
 
   <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
   <input type ="text" name ="inv" placeholder="Инвентариза́ционный" />
-  
- Сотрудник
+  Сотрудник
   <?php
 $sql = "SELECT * FROM sotrydnik";
 $result_select = mysql_query($sql);
@@ -61,7 +54,7 @@ echo "</select>";
 </form>
 
 <hr/>
-
+<div class="btab">
 <table class="tab" border="1" >
   <tr>
    
@@ -73,11 +66,16 @@ echo "</select>";
   </tr>
 
 <?php
-$list = a1();
-foreach ($list as $row)
-
+$result = mysql_query('SELECT printer.ID, printer.inv, .printer.model, printer.idsotr, GROUP_CONCAT(kartridj.id) as Kartiges, sotrydnik.fio  FROM printer
+LEFT JOIN print_link_kart
+ON printer.ID = print_link_kart.id_print
+LEFT JOIN kartridj
+ON print_link_kart.id_kart = kartridj.id
+LEFT JOIN sotrydnik
+ON printer.idsotr = sotrydnik.id
+GROUP BY printer.ID');
+while ($row = mysql_fetch_assoc($result))
 { 
-
     echo "<tr>";
     echo '<td>'.$row['ID'].'</td>';
     echo '<td>'.$row['model'].'</td>';
@@ -86,9 +84,7 @@ foreach ($list as $row)
     echo '<td>'.$row['fio'].'</td>';
     echo "</tr>";   
  
-
 }
-
 ?>
 
 </table>

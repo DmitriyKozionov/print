@@ -73,14 +73,16 @@ echo "</select>";
   <tr>
     <td>ID</td>
     <td>Принтер</td>
+  
     <td>Работа</td>
- 
-     <td>Дата</td>
+    <td>Дата</td>
     
    </tr>
    <?php
 
-$result = mysql_query('SELECT * FROM remprint');
+$result = mysql_query("SELECT remprint.id, remprint.idprint, remprint.idrabot, vidrab.name, remprint.data FROM remprint
+LEFT JOIN vidrab
+ON vidrab.id = remprint.idrabot");
 
 while ($row = mysql_fetch_assoc($result))
 
@@ -91,8 +93,7 @@ while ($row = mysql_fetch_assoc($result))
   
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['idprint'].'</td>';
-    echo '<td>'.$row['idrabot'].'</td>';
-   
+    echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['data'].'</td>';
  
    

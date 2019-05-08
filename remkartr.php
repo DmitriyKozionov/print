@@ -7,6 +7,7 @@ if (isset($_POST['idrabot']))
   $idkart = trim($_POST['idkart']);
   $idrabot = trim($_POST['idrabot']);
   $data = trim($_POST['data']);
+
   
 
         
@@ -42,11 +43,14 @@ exit();
  <div class="container">
   Картридж
   <?php
-$sql = "SELECT * FROM kartridj";
+$sql = "SELECT kartridj.id as Kartiges, kartridj.model, sotrydnik.id, sotrydnik.fio FROM kartridj 
+LEFT JOIN sotrydnik
+ON sotrydnik.id = kartridj.idsotr
+GROUP BY kartridj.id";
 $result_select = mysql_query($sql);
 echo "<select name = 'idkart'>";
 while($object = mysql_fetch_object($result_select)){
-echo "<option value = '$object->id,''$object->model,' >  $object->model  </option>";
+echo "<option value = '$object->Kartiges''$object->idkart >  $object->fio, $object->Kartiges  </option>";
 }
 echo "</select>";
 ?>
@@ -70,13 +74,16 @@ echo "</select>";
   <tr>
     <td>ID</td>
     <td>Картридж</td>
+    <td>Сотруник</td>
     <td>Работа</td>
      <td>Дата</td>
     
    </tr>
    <?php
 
-$result = mysql_query("SELECT * FROM remkartr");
+$result = mysql_query("SELECT remkartr.id, remkartr.idkart, remkartr.idrabot, vidrab.name, remkartr.data FROM remkartr 
+LEFT JOIN vidrab
+ON vidrab.id = remkartr.idrabot");
 
 
 while ($row = mysql_fetch_assoc($result))
@@ -88,7 +95,8 @@ while ($row = mysql_fetch_assoc($result))
   
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['idkart'].'</td>';
-    echo '<td>'.$row['idrabot'].'</td>';
+    echo '<td>'.$row['fio'].'</td>';
+    echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['data'].'</td>';
  
    

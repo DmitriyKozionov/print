@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 18 2019 г., 08:06
+-- Время создания: Май 08 2019 г., 07:14
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -83,7 +83,8 @@ CREATE TABLE `printer` (
 INSERT INTO `printer` (`ID`, `inv`, `model`, `idsotr`) VALUES
 (69, 860935, 'HP LaserJet 2100m', '15'),
 (70, 34573278, 'HP LaserJet 1000w', '16'),
-(71, 28485856, 'HP LaserJet 2200dtn', '17');
+(71, 28485856, 'HP LaserJet 2200dtn', '17'),
+(204, 55, 'asd', '15');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,8 @@ INSERT INTO `print_link_kart` (`id`, `id_print`, `id_kart`) VALUES
 (67, 69, 59),
 (68, 70, 60),
 (70, 71, 61),
-(71, 69, 62);
+(71, 69, 62),
+(72, 72, 62);
 
 -- --------------------------------------------------------
 
@@ -128,7 +130,8 @@ INSERT INTO `remkartr` (`id`, `idkart`, `idrabot`, `data`) VALUES
 (13, 59, 1, '2019-04-18 04:57:59'),
 (14, 62, 1, '2019-04-18 04:58:02'),
 (15, 62, 1, '2019-04-18 04:58:05'),
-(16, 62, 1, '2019-04-18 04:59:02');
+(16, 62, 1, '2019-04-18 04:59:02'),
+(17, 59, 1, '2019-05-08 04:08:49');
 
 -- --------------------------------------------------------
 
@@ -292,17 +295,17 @@ ALTER TABLE `otdel`
 -- AUTO_INCREMENT для таблицы `printer`
 --
 ALTER TABLE `printer`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 --
 -- AUTO_INCREMENT для таблицы `print_link_kart`
 --
 ALTER TABLE `print_link_kart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT для таблицы `remkartr`
 --
 ALTER TABLE `remkartr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT для таблицы `remprint`
 --
