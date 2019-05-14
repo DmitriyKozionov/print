@@ -35,7 +35,7 @@ exit();
 
 
       <hr/>
-
+<div class="container">
   <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
   <input type ="text" name ="inv" placeholder="Инвентариза́ционный" />
@@ -54,7 +54,7 @@ echo "</select>";
 </form>
 
 <hr/>
-<div class="btab">
+
 <table class="tab" border="1" >
   <tr>
    
@@ -66,7 +66,7 @@ echo "</select>";
   </tr>
 
 <?php
-$result = mysql_query('SELECT printer.ID, printer.inv, .printer.model, printer.idsotr, GROUP_CONCAT(kartridj.id) as Kartiges, sotrydnik.fio  FROM printer
+$result = mysql_query('SELECT printer.ID, printer.inv, .printer.model , printer.idsotr, GROUP_CONCAT(kartridj.id) as Kartiges, sotrydnik.fio  FROM printer
 LEFT JOIN print_link_kart
 ON printer.ID = print_link_kart.id_print
 LEFT JOIN kartridj

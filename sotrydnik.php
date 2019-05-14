@@ -65,7 +65,9 @@ echo "</select>";
    </tr>
    <?php
 
-$result = mysql_query('SELECT * FROM sotrydnik');
+$result = mysql_query("SELECT sotrydnik.id, sotrydnik.fio, sotrydnik.doljn, otdel.nazv as nazv FROM sotrydnik
+LEFT JOIN otdel
+ON sotrydnik.id_otd = otdel.id ");
 
 while ($row = mysql_fetch_assoc($result))
 
@@ -76,7 +78,7 @@ while ($row = mysql_fetch_assoc($result))
     echo "<td>".$row['id']."</td>";
 
     echo "<td>".$row['fio']."</td>";
-    echo "<td>".$row['id_otd'].$row['nazv']."</td>";
+    echo "<td>".$row['nazv']."</td>";
     echo '<td>'.$row['doljn'].'</td>';
    
     

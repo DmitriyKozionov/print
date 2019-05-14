@@ -81,9 +81,19 @@ echo "</select>";
    </tr>
    <?php
 
-$result = mysql_query("SELECT remkartr.id, remkartr.idkart, remkartr.idrabot, vidrab.name, remkartr.data FROM remkartr 
+$result = mysql_query("SELECT remkartr.id, remkartr.idkart, remkartr.idrabot, vidrab.name, remkartr.data, sotrydnik.fio
+FROM remkartr 
 LEFT JOIN vidrab
-ON vidrab.id = remkartr.idrabot");
+ON vidrab.id = remkartr.idrabot
+
+LEFT JOIN print_link_kart
+ON remkartr.idkart = print_link_kart.id_kart
+
+LEFT JOIN printer
+ON printer.id = print_link_kart.id_print
+
+LEFT JOIN sotrydnik
+ON sotrydnik.id = printer.idsotr");
 
 
 while ($row = mysql_fetch_assoc($result))

@@ -110,7 +110,7 @@ $sql = "SELECT * FROM kartridj";
 $result_select = mysql_query($sql);
 echo "<select name = 'id_print'>";
 while($object = mysql_fetch_object($result_select)){
-echo "<option value = '$object->id' > $object->id $object->model </option>";
+echo "<option value = '$object->id' > $object->id $object->model  </option>";
 }
 echo "</select>";
 ?>
