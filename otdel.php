@@ -18,6 +18,15 @@ if (isset($_POST['nazv']))
 header('Location: otdel.php');
 exit();
 }
+if ($_GET['action']=='deleteOtdel') //Проверяем есть ли в массиве GET строка с ключом deleteSotrs
+{  
+  $otdel_id = trim($_GET['otdel_id']);//// В переменную $sotr_id пишем значение из массива Get 
+
+  $sql = "DELETE FROM otdel WHERE id = '$otdel_id'"; //Формируем текст запроса
+   mysql_query($sql);  //Выполняем запрос
+
+}
+
 ?>
 <html>
 
@@ -46,8 +55,8 @@ exit();
   <tr>
    
     <td>ID</td>
-   
-     <td>Название</td>
+    <td>Название</td>
+    <td style="border-style:hidden"></td>
    </tr>
    <?php
 $result = mysql_query('SELECT * FROM otdel');
@@ -62,8 +71,13 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['nazv'].'</td>';
    
     
-    echo "</tr>";   
- 
+     
+    echo '<td style="border-style:hidden">';
+    echo '<a href="';
+    echo 'otdel.php?action=deleteOtdel&otdel_id=';
+    echo $row['id'].'"';
+    echo 'class="btn btn-outline-danger btn-sm">'.'Удалить </a> </td>';
+    echo "</tr>";
 
 }
 

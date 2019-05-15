@@ -22,18 +22,33 @@ mysql_select_db('bdprint');
         <title>Контент</title>
     </head>
     <body>
-      <div class="zagolovok"><h2>Отдел</h2></div>
+      <div class="zagolovok"><h2>Отчет</h2></div>
 
 
       <hr/>
-<div class="container">
 
+<div class="container">
+ <P> Отчет за период:</P>
   <form method="post">
   <input type = "date" name ="data"  value="ДД/ММ/ГГГГ">
   -
   <input type = "date" name ="data2" value="ДД/ММ/ГГГГ">
   <input type = "submit" value="Вывести"/>
-  <button class="myprint">Печать</button>
+  <button class="myprint">Печать </button>
+  <hr/>
+  <P> Отчет по конкретному оборудованию:</P>
+  
+  <?php
+$sql = "SELECT * FROM kartridj";
+$result_select = mysql_query($sql);
+echo "<select name = 'id_print'>";
+while($object = mysql_fetch_object($result_select)){
+echo "<option value = '$object->id' > $object->id $object->model  </option>";
+}
+echo "</select>";
+?>
+  <input type = "submit" value="Вывести"/>
+  <button class="myprint">Печать </button>
 </form>
 
 
@@ -62,7 +77,7 @@ $('iframe').remove();
     <td>Фио</td>
     <td>Принтер</td>
     <td>Номер принтера</td>
-    <td>Id картриджа</td>
+    <td>№ картриджа</td>
     <td>Модель картриджа</td>
     <td>Вид работ</td>
     <td>Дата</td>

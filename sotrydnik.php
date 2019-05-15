@@ -20,7 +20,42 @@ if (isset($_POST['fio']))
 header('Location: sotrydnik.php');
 exit();
 }
+
+
+if ($_GET['action']=='deleteSotrs') //Проверяем есть ли в массиве GET строка с ключом deleteSotrs
+{   
+  
+  $sotr_id = trim($_GET['sotr_id']); //// В переменную $sotr_id пишем значение из массива Get 
+  
+   $sql = "DELETE FROM sotrydnik WHERE id = '$sotr_id'"; //Формируем текст запроса
+   mysql_query($sql);  //Выполняем запрос
+
+
+   $sql = "DELETE FROM printer WHERE id = '$sotr_id'"; //Формируем текст запроса
+   mysql_query($sql); 
+
+   $result = mysql_query("SELECT id FROM printer where idsotr = '$sotr_id' LIMIT 1"); //Получаем ID связанного принтера
+   $row = mysql_fetch_assoc($result); //Получаем ID связанного принтера
+   $id_print = $row['id']; //Получаем ID связанного принтера
+
+   $sql = "DELETE FROM print_link_kart WHERE id_print = '$id_print'"; //Формируем текст запроса, для удаления связки принтера и картриджа
+   mysql_query($sql); 
+
+
+
+
+ 
+}
+
+
+
+
 ?>
+
+
+
+
+
 <html>
 
     <head>
@@ -62,6 +97,7 @@ echo "</select>";
     <td>ФИО</td>
      <td>Отдел</td>
      <td>Должность</td>
+     <td style="border-style:hidden">&nbsp</td>
    </tr>
    <?php
 
@@ -80,8 +116,13 @@ while ($row = mysql_fetch_assoc($result))
     echo "<td>".$row['fio']."</td>";
     echo "<td>".$row['nazv']."</td>";
     echo '<td>'.$row['doljn'].'</td>';
-   
-    
+
+    //echo'<td> <a href="sotrydnik.php?action=deleteSotrs&sotr_id='.$row['id']'" class="btn btn-danger"> Удалить </a>'. '</td>';
+    echo '<td style="border-style:hidden">';
+    echo '<a href="';
+    echo 'sotrydnik.php?action=deleteSotrs&sotr_id=';
+    echo $row['id'].'"';
+    echo 'class="btn btn-outline-danger btn-sm">'.'Удалить </a> </td>';
     echo "</tr>";   
  
 

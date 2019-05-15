@@ -8,11 +8,6 @@ if (isset($_POST['idrabot']))
   $idrabot = trim($_POST['idrabot']);
   $data = trim($_POST['data']);
 
-  
-
-        
-
-
   $remkart = mysql_real_escape_string($remkart);
 
 
@@ -22,6 +17,14 @@ if (isset($_POST['idrabot']))
 
 header('Location: remkartr.php');
 exit();
+}
+if ($_GET['action']=='deleteRemkart') //Проверяем есть ли в массиве GET строка с ключом deleteSotrs
+{  
+  $Remkart_id = trim($_GET['Remkart_id']);//// В переменную $sotr_id пишем значение из массива Get 
+
+  $sql = "DELETE FROM remkartr WHERE id = '$Remkart_id'"; //Формируем текст запроса
+   mysql_query($sql);  //Выполняем запрос
+
 }
 ?>
 <html>
@@ -77,6 +80,7 @@ echo "</select>";
     <td>Сотруник</td>
     <td>Работа</td>
      <td>Дата</td>
+     <TD style="border-style:hidden"> </TD>
     
    </tr>
    <?php
@@ -108,7 +112,12 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['fio'].'</td>';
     echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['data'].'</td>';
- 
+     echo '<td style="border-style:hidden">';
+    echo '<a href="';
+    echo 'remkartr.php?action=deleteRemkart&Remkart_id=';
+    echo $row['id'].'"';
+    echo 'class="btn btn-outline-danger btn-sm">'.'Удалить </a> </td>';
+
    
     
     echo '</tr>';   

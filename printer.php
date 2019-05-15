@@ -18,6 +18,19 @@ if (isset($_POST['model']))
 header('Location: printer.php');
 exit();
 }
+if ($_GET['action']=='deletePrint') //Проверяем есть ли в массиве GET строка с ключом deleteSotrs
+{  
+  $print_ID = trim($_GET['print_ID']);//// В переменную $sotr_id пишем значение из массива Get 
+
+  $sql = "DELETE FROM printer WHERE ID = '$print_ID'"; //Формируем текст запроса
+   mysql_query($sql);  //Выполняем запрос
+
+}
+
+
+
+
+
 ?>
 
 <html>
@@ -38,7 +51,7 @@ exit();
 <div class="container">
   <form method="post">
   <input type = "text" name ="model" placeholder="Модель" />
-  <input type ="text" name ="inv" placeholder="Инвентариза́ционный" />
+  <input type ="text" name ="inv" placeholder="Инвентарный номер" />
   Сотрудник
   <?php
 $sql = "SELECT * FROM sotrydnik";
@@ -63,6 +76,7 @@ echo "</select>";
      <td>Инвентариза́ционный номер</td>
     <td>ID_картриджа</td>
     <td>Фио сотрудника</td>
+    <TD style="border-style:hidden"> </TD>
   </tr>
 
 <?php
@@ -82,6 +96,12 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['inv'].'</td>';
     echo '<td>'.$row['Kartiges'].'</td>';
     echo '<td>'.$row['fio'].'</td>';
+    echo '<td style="border-style:hidden">';
+    echo '<a href="';
+    echo 'printer.php?action=deletePrint&print_ID=';
+    echo $row['ID'].'"';
+    echo 'class="btn btn-outline-danger btn-sm">'.'Удалить </a> </td>';
+
     echo "</tr>";   
  
 }

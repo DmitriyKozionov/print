@@ -23,6 +23,15 @@ if (isset($_POST['idrabot']))
 header('Location: remprint.php');
 exit();
 }
+
+if ($_GET['action']=='deleteRempr') //Проверяем есть ли в массиве GET строка с ключом deleteSotrs
+{  
+  $Rempr_id = trim($_GET['Rempr_id']);//// В переменную $sotr_id пишем значение из массива Get 
+
+  $sql = "DELETE FROM remprint WHERE id = '$Rempr_id'"; //Формируем текст запроса
+   mysql_query($sql);  //Выполняем запрос
+
+}
 ?>
 <html>
 
@@ -76,7 +85,7 @@ echo "</select>";
   
     <td>Работа</td>
     <td>Дата</td>
-    
+    <td style="border-style:hidden></td>
    </tr>
    <?php
 
@@ -95,7 +104,12 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['idprint'].'</td>';
     echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['data'].'</td>';
- 
+     echo '<td style="border-style:hidden">';
+    echo '<a href="';
+    echo 'remprint.php?action=deleteRempr&Rempr_id=';
+    echo $row['id'].'"';
+    echo 'class="btn btn-outline-danger btn-sm">'.'Удалить </a> </td>';
+    echo "</tr>";
    
     
     echo '</tr>';   

@@ -15,6 +15,18 @@ if ($_POST['action'] == 'add_printer_link_kartridj')
    $kartridj = mysql_real_escape_string($kartridj);
    $sql = "INSERT INTO kartridj (model,idsotr) VALUES ('$model','$idsotr')";
   mysql_query($sql);}
+
+
+if ($_GET['action']=='deleteKartiges') //Проверяем есть ли в массиве GET строка с ключом deleteSotrs
+{  
+  $kart_Kartiges= trim($_GET['kart_Kartiges']);//// В переменную $sotr_id пишем значение из массива Get 
+
+  $sql = "DELETE FROM kartridj WHERE id = '$kart_Kartiges'"; //Формируем текст запроса
+   mysql_query($sql);  //Выполняем запрос
+
+}
+
+
   ?>
 
 
@@ -56,8 +68,8 @@ echo "</select>";
   <tr>
     <td>id</td>
     <td>Модель</td>
-  
     <td>Сотрудник</td>
+    <td style="border-style:hidden"> </td>
     
   
   </tr>
@@ -73,9 +85,12 @@ while ($row = mysql_fetch_assoc($result))
     echo "<tr>";
     echo '<td>'.$row['Kartiges'].'</td>';
     echo '<td>'.$row['model'].'</td>';
-  
     echo '<td>'.$row['fio'].'</td>';
-
+    echo '<td style="border-style:hidden">';
+    echo '<a href="';
+    echo 'kartrij.php?action=deleteKartiges&kart_Kartiges=';
+    echo $row['Kartiges'].'"';
+    echo 'class="btn btn-outline-danger btn-sm">'.'Удалить </a> </td>';
    
     echo "</tr>";   
  
