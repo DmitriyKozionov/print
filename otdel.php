@@ -56,7 +56,7 @@ if ($_GET['action']=='deleteOtdel') //Проверяем есть ли в мас
    
     <td>ID</td>
     <td>Название</td>
-    <td style="border-style:hidden"></td>
+    <td class="td"></td>
    </tr>
    <?php
 $result = mysql_query('SELECT * FROM otdel');
@@ -72,7 +72,7 @@ while ($row = mysql_fetch_assoc($result))
    
     
      
-    echo '<td style="border-style:hidden">';
+    echo '<td class="td">';
     echo '<a href="';
     echo 'otdel.php?action=deleteOtdel&otdel_id=';
     echo $row['id'].'"';

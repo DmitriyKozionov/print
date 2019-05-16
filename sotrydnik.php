@@ -97,7 +97,7 @@ echo "</select>";
     <td>ФИО</td>
      <td>Отдел</td>
      <td>Должность</td>
-     <td style="border-style:hidden">&nbsp</td>
+     <td class="td">&nbsp</td>
    </tr>
    <?php
 
@@ -118,7 +118,7 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['doljn'].'</td>';
 
     //echo'<td> <a href="sotrydnik.php?action=deleteSotrs&sotr_id='.$row['id']'" class="btn btn-danger"> Удалить </a>'. '</td>';
-    echo '<td style="border-style:hidden">';
+    echo '<td class="td">';
     echo '<a href="';
     echo 'sotrydnik.php?action=deleteSotrs&sotr_id=';
     echo $row['id'].'"';

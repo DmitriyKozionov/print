@@ -69,3 +69,8 @@ nav ul{
   margin-right: auto;
   
  }  
+ .td {
+border-right: hidden;
+border-top: hidden;
+border-bottom: hidden;
+ }

@@ -80,7 +80,7 @@ echo "</select>";
     <td>Сотруник</td>
     <td>Работа</td>
      <td>Дата</td>
-     <TD style="border-style:hidden"> </TD>
+     <TD class="td"> </TD>
     
    </tr>
    <?php
@@ -112,7 +112,7 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['fio'].'</td>';
     echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['data'].'</td>';
-     echo '<td style="border-style:hidden">';
+     echo '<td class="td">';
     echo '<a href="';
     echo 'remkartr.php?action=deleteRemkart&Remkart_id=';
     echo $row['id'].'"';

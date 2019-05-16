@@ -69,7 +69,7 @@ echo "</select>";
     <td>id</td>
     <td>Модель</td>
     <td>Сотрудник</td>
-    <td style="border-style:hidden"> </td>
+    <td class="td"> </td>
     
   
   </tr>
@@ -86,7 +86,7 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['Kartiges'].'</td>';
     echo '<td>'.$row['model'].'</td>';
     echo '<td>'.$row['fio'].'</td>';
-    echo '<td style="border-style:hidden">';
+    echo '<td class="td"">';
     echo '<a href="';
     echo 'kartrij.php?action=deleteKartiges&kart_Kartiges=';
     echo $row['Kartiges'].'"';

@@ -76,7 +76,7 @@ echo "</select>";
      <td>Инвентариза́ционный номер</td>
     <td>ID_картриджа</td>
     <td>Фио сотрудника</td>
-    <TD style="border-style:hidden"> </TD>
+    <TD class="td"> </TD>
   </tr>
 
 <?php
@@ -96,7 +96,7 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['inv'].'</td>';
     echo '<td>'.$row['Kartiges'].'</td>';
     echo '<td>'.$row['fio'].'</td>';
-    echo '<td style="border-style:hidden">';
+    echo '<td class="td">';
     echo '<a href="';
     echo 'printer.php?action=deletePrint&print_ID=';
     echo $row['ID'].'"';

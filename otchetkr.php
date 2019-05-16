@@ -102,8 +102,8 @@ RIGHT JOIN
         ON vidrab.id = remkartr.idrabot
         ) AS REMONT
 
-ON  REMONT.idkart = print_link_kart.id_kart 
-WHERE REMONT.data BETWEEN '$data1' AND '$data2' 
+ON  REMONT.idkart = print_link_kart.id_kart
+WHERE (REMONT.data BETWEEN '$data1' AND '$data2') AND REMONT.idkart = 16
 
 
 Union all

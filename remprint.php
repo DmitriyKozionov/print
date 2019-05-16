@@ -85,7 +85,7 @@ echo "</select>";
   
     <td>Работа</td>
     <td>Дата</td>
-    <td style="border-style:hidden></td>
+    <td class="td"></td>
    </tr>
    <?php
 
@@ -104,7 +104,7 @@ while ($row = mysql_fetch_assoc($result))
     echo '<td>'.$row['idprint'].'</td>';
     echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['data'].'</td>';
-     echo '<td style="border-style:hidden">';
+     echo '<td class="td">';
     echo '<a href="';
     echo 'remprint.php?action=deleteRempr&Rempr_id=';
     echo $row['id'].'"';
